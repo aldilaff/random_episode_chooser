@@ -3,8 +3,11 @@ from flask import Flask,  render_template, request
 import requests
 import api_keys
 import random
+from flask_bootstrap import Bootstrap
+
 
 app = Flask(__name__)
+Bootstrap(app)
 JWT = api_keys.get_JWT()
 authorization_header = {'Authorization': 'Bearer {}'.format(JWT)}
 # print(authorization_header)

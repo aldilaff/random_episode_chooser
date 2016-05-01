@@ -4,13 +4,15 @@
 {% endblock %}
 
 {% block content %}
-	{{show_name}}
-<br>
+<div class="container">
 {% if result %}
-	{% for item in result %}
-		<li><a href="{{ url_for('result', show_id=item.id) }}?show_name={{item.seriesName}}">{{item.seriesName}}</li>
-	{% endfor %}
+	<ul class="list-group">
+		{% for item in result %}
+			<li class="list-group-item"><a href="{{ url_for('result', show_id=item.id) }}?show_name={{item.seriesName}}">{{item.seriesName}}</li>
+		{% endfor %}
+	</ul>
 {% else %}
 	Could not find show. Try again.
 {% endif %}
+</div>
 {% endblock content %}

@@ -3,9 +3,11 @@
 	Result
 {% endblock %}
 {% block content %}
-	<h3> {{show_name}} </h3>
-	Episode Name: {{random_episode.episodeName}} </br>
-	Season: {{random_episode.airedSeason}} </br>
-	Episode Number: {{random_episode.airedEpisodeNumber}} </br>
-	Overview: {{random_episode.overview}} </br>
+	<div class="container">
+		<h3> {{show_name}} </h3>
+		Episode Name: {{random_episode.episodeName}} </br>
+		Season: {{random_episode.airedSeason}} </br>
+		Episode Number: {{random_episode.airedEpisodeNumber}} </br>
+		Overview: {{random_episode.overview}} </br>
+	</div>
 {% endblock content %}
