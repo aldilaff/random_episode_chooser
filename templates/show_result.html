@@ -7,7 +7,7 @@
 <br>
 {% if result %}
 	{% for item in result %}
-		<li>{{item.seriesName}}</li>
+		<li><a href="{{ url_for('result', show_id=item.id) }}">{{item.seriesName}}</li>
 	{% endfor %}
 {% else %}
 	Could not find show. Try again.

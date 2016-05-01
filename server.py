@@ -2,6 +2,7 @@
 from flask import Flask,  render_template, request
 import requests
 import api_keys
+import random
 
 app = Flask(__name__)
 JWT = api_keys.get_JWT()
@@ -27,6 +28,24 @@ def show_result():
 			result = None
 	return render_template('show_result.html', show_name=show_name,
 	 result=result)
+
+@app.route('/result/<show_id>', methods=["GET", "POST"])
+def result(show_id):
+	r = requests.get('https://api.thetvdb.com/series/'+show_id+'/episodes', headers=authorization_header)
+	if r.status_code==requests.codes.ok:
+		data = r.json()['data']
+		print(len(data))
+		while r.json()['links']['next'] is not None:
+			print('in loop')
+			params = {'page':r.json()['links']['next']}
+			r = requests.get('https://api.thetvdb.com/series/'+show_id+'/episodes', headers=authorization_header, params=params)
+			data += r.json()['data']
+			print(len(data))
+		random_episode = data[random.randrange(len(data))]
+	else:
+		print(r.text)
+		data = None
+	return render_template('result.html', random_episode=random_episode)
 
 
 
