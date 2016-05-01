@@ -15,8 +15,8 @@
 {}
 
 {% block navbar %}
-    <div class="page-header">
-        <h1>Random Episode Chooser</h1>
+    <div class="page-header" style="margin-left:3px">
+        <h1 onclick="location.href='{{url_for('index')}}'">Random Episode Chooser</h1>
     </div>
     <div id="search" style="margin-left:10px">
         <form action="/show_result" method="post" class="form-inline">

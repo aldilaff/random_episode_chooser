@@ -12,7 +12,7 @@ JWT = api_keys.get_JWT()
 authorization_header = {'Authorization': 'Bearer {}'.format(JWT)}
 # print(authorization_header)
 @app.route('/')
-def hello_world():
+def index():
     return render_template("index.html")
 
 
