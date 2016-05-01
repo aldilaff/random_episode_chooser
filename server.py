@@ -31,6 +31,7 @@ def show_result():
 
 @app.route('/result/<show_id>', methods=["GET", "POST"])
 def result(show_id):
+	show_name = request.args.get('show_name')
 	r = requests.get('https://api.thetvdb.com/series/'+show_id+'/episodes', headers=authorization_header)
 	if r.status_code==requests.codes.ok:
 		data = r.json()['data']
@@ -45,7 +46,7 @@ def result(show_id):
 	else:
 		print(r.text)
 		data = None
-	return render_template('result.html', random_episode=random_episode)
+	return render_template('result.html', show_name=show_name, random_episode=random_episode)
 
 
 
