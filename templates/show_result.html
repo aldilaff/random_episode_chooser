@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>Show Result</title>
+</head>
+<body>
+{{show_name}}
+<br>
+{% if result %}
+	{% for item in result %}
+		<li>{{item.seriesName}}</li>
+	{% endfor %}
+{% else %}
+	Could not find show. Try again.
+{% endif %}
+</body>
+</html>
